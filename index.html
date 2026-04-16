@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة إبان الرقمية | نموذج تجريبي مفصل</title>
+    <title>بوابة إبان الرقمية | نموذج العرض النهائي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --gov-green: #2d4626; /* أخضر رسمي غامق */
+            --gov-green: #2d4626; 
             --gold: #c5a059;
-            --bg-light: #f9fafb;
+            --bg-light: #f4f7f2;
             --white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-light); color: #333; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-light); color: #333; line-height: 1.6; }
 
-        /* الهيدر الرسمي */
         header {
             background: var(--white);
             padding: 15px 5%;
@@ -33,118 +32,109 @@
         }
 
         .logo-section { display: flex; align-items: center; gap: 15px; }
-        .logo-section img { height: 50px; border-radius: 50%; border: 2px solid var(--gold); }
-        .logo-text h2 { color: var(--gov-green); font-size: 1.2rem; }
+        .logo-section img { height: 55px; border-radius: 50%; border: 2px solid var(--gold); }
 
-        /* قسم الترحيب الرئيسي */
         .hero {
             background: linear-gradient(45deg, var(--gov-green), #426338);
             color: white;
-            padding: 80px 5%;
+            padding: 60px 5%;
             text-align: center;
-            clip-path: ellipse(150% 100% at 50% 0%); /* حركة تصميم عصرية */
+            margin-bottom: 40px;
         }
 
-        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
-        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
 
-        /* شبكة الأيقونات (الخدمات المفصلة) */
-        .section-title { text-align: center; margin: 50px 0 30px; color: var(--gov-green); font-weight: 800; }
-        
+        /* شبكة الأيقونات */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             padding: 0 5%;
             max-width: 1200px;
-            margin: 0 auto 50px;
+            margin: 0 auto 60px;
         }
 
-        .service-item {
+        .service-card {
             background: var(--white);
-            padding: 30px 20px;
-            border-radius: 20px;
+            padding: 40px 20px;
+            border-radius: 25px;
             text-align: center;
             transition: 0.3s;
             border: 1px solid #eee;
             cursor: pointer;
-            text-decoration: none;
-            color: inherit;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        .service-item:hover {
+        .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border-color: var(--gold);
         }
 
-        .service-item i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
-        .service-item h4 { color: var(--gov-green); margin-bottom: 10px; }
-        .service-item p { font-size: 0.85rem; color: #777; }
+        .service-card i { font-size: 3.5rem; color: var(--gold); margin-bottom: 20px; }
+        .service-card h4 { color: var(--gov-green); font-size: 1.3rem; margin-bottom: 10px; }
 
-        /* قسم الرؤية والأهداف (مفصل بنظام البطاقات الكبيرة) */
-        .about-section {
-            background: #fff;
-            padding: 60px 5%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
+        /* نافذة التعريفات المنبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
         }
 
-        .about-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            padding: 30px;
-            border-right: 6px solid var(--gold);
-            background: #fdfdfd;
-            border-radius: 10px;
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .about-card h3 { color: var(--gov-green); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
 
-        /* إحصائيات سريعة */
-        .stats-bar {
+        .modal-header {
             background: var(--gov-green);
             color: white;
-            padding: 40px 5%;
-            display: flex;
-            justify-content: space-around;
+            padding: 25px;
             text-align: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            position: relative;
         }
 
-        .stat-item h2 { font-size: 2.5rem; color: var(--gold); }
+        .modal-body { padding: 40px 30px; text-align: right; }
+        .modal-body h3 { color: var(--gov-green); margin-bottom: 20px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
+        .modal-body p { font-size: 1.05rem; color: #444; margin-bottom: 15px; }
+        .modal-body ul { margin-right: 20px; margin-bottom: 20px; }
+        .modal-body li { margin-bottom: 8px; color: #555; }
 
-        /* فوتر احترافي */
+        .close-btn {
+            position: absolute;
+            top: 15px; left: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: white;
+        }
+
         footer {
             background: #1a2a17;
             color: white;
-            padding: 50px 5% 20px;
+            padding: 50px 5%;
+            text-align: center;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 { color: var(--gold); margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .footer-links a { color: var(--gold); text-decoration: none; font-weight: bold; cursor: pointer; }
         
-        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
-        .social-icons a { color: white; font-size: 1.5rem; transition: 0.3s; }
-        .social-icons a:hover { color: var(--gold); }
-
-        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-        }
+        .social-icons a { color: white; margin: 0 15px; font-size: 1.8rem; }
     </style>
 </head>
 <body>
@@ -153,96 +143,113 @@
         <div class="logo-section">
             <img src="logo.jpeg" alt="Eban Logo">
             <div class="logo-text">
-                <h2>بوابة إبان الرقمية</h2>
+                <h2 style="color: var(--gov-green);">بوابة إبــــان التوعوية</h2>
             </div>
         </div>
-        <div class="header-links" style="font-weight: bold; color: var(--gov-green);">IAU - قسم الإعلام</div>
+        <div style="font-weight: bold; color: var(--gov-green);">جامعة IAU | كلية الآداب</div>
     </header>
 
     <section class="hero">
-        <h1>مستقبل الخدمات الحكومية الرقمية</h1>
-        <p>نموذج تجريبي يستعرض رؤية حملة إبان في توعية المجتمع بأهم المنصات الإلكترونية السعودية وتسهيل الوصول إليها.</p>
+        <h1>تحليل المنصات الرقمية الحكومية</h1>
+        <p>دليلك التوعوي الشامل لفهم خدمات التحول الرقمي في المملكة العربية السعودية</p>
     </section>
 
-    <h2 class="section-title">◈ خدمات البوابة الإلكترونية</h2>
-    
     <div class="services-grid">
-        <div class="service-item">
-            <i class="fas fa-id-card"></i>
+        <div class="service-card" onclick="openModal('absher')">
+            <i class="fas fa-user-check"></i>
             <h4>منصة أبشر</h4>
-            <p>دليل شامل للخدمات الفردية، الجوازات، والمرور.</p>
+            <p>اضغطي لمعرفة التفاصيل</p>
         </div>
-        <div class="service-item">
-            <i class="fas fa-heartbeat"></i>
+        <div class="service-card" onclick="openModal('nafath')">
+            <i class="fas fa-fingerprint"></i>
+            <h4>نفاذ الموحد</h4>
+            <p>اضغطي لمعرفة التفاصيل</p>
+        </div>
+        <div class="service-card" onclick="openModal('sehhaty')">
+            <i class="fas fa-hand-holding-heart"></i>
             <h4>منصة صحتي</h4>
-            <p>كيفية حجز المواعيد والوصول للسجل الصحي الرقمي.</p>
+            <p>اضغطي لمعرفة التفاصيل</p>
         </div>
-        <div class="service-item">
-            <i class="fas fa-university"></i>
-            <h4>منصة نفاذ</h4>
-            <p>شرح الهوية الرقمية الموحدة لجميع الخدمات.</p>
-        </div>
-        <div class="service-item">
+        <div class="service-card" onclick="openModal('qiwa')">
             <i class="fas fa-briefcase"></i>
             <h4>منصة قوى</h4>
-            <p>دليل خدمات قطاع العمل والموارد البشرية.</p>
+            <p>اضغطي لمعرفة التفاصيل</p>
         </div>
-        <div class="service-item">
+        <div class="service-card" onclick="openModal('study')">
             <i class="fas fa-graduation-cap"></i>
             <h4>منصة ادرس</h4>
-            <p>كل ما يخص الخدمات التعليمية والجامعية.</p>
-        </div>
-        <div class="service-item">
-            <i class="fas fa-shield-alt"></i>
-            <h4>الأمن السيبراني</h4>
-            <p>نصائح لحماية بياناتك أثناء استخدام المواقع.</p>
+            <p>اضغطي لمعرفة التفاصيل</p>
         </div>
     </div>
 
-    <div class="about-section">
-        <div class="about-card">
-            <h3><i class="fas fa-flag"></i> رؤيتنا الاستراتيجية</h3>
-            <p>نهدف إلى أن تكون "إبان" المرجع الأول للطالبات والمجتمع في فهم واستخدام التقنيات الحكومية الحديثة، دعماً لمسيرة المملكة في التحول الرقمي الكامل.</p>
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle">تفاصيل المنصة</h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                </div>
         </div>
-        <div class="about-card">
-            <h3><i class="fas fa-bullseye"></i> رسالة الحملة</h3>
-            <p>نعمل من خلال مسار العلاقات العامة بجامعة IAU على تحويل المعلومات التقنية المعقدة إلى محتوى إعلامي بسيط وجذاب يصل للجميع.</p>
-        </div>
-    </div>
-
-    <div class="stats-bar">
-        <div class="stat-item"><h2>+50</h2><p>منصة مدعومة</p></div>
-        <div class="stat-item"><h2>100%</h2><p>وعي رقمي</p></div>
-        <div class="stat-item"><h2>2030</h2><p>رؤية طموحة</p></div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>عن إبان</h4>
-                <p>مشروع تخرج طالبات قسم الإعلام بجامعة الإمام عبد الرحمن بن فيصل - مسار العلاقات العامة.</p>
-            </div>
-            <div class="footer-col">
-                <h4>روابط سريعة</h4>
-                <ul>
-                    <li>◈ دليل المستخدم</li>
-                    <li>◈ الأسئلة الشائعة</li>
-                    <li>◈ سياسة الخصوصية</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>تواصل معنا</h4>
-                <div class="social-icons">
-                    <a href="https://tiktok.com/@eban3_"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://wa.me/9665xxxxxxxx"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+        <div class="footer-links">
+            <a onclick="openModal('vision')">رؤية المشروع</a>
+            <a onclick="openModal('privacy')">السياسات</a>
         </div>
-        <div class="copyright">
-            جميع الحقوق محفوظة - حملة إبان &copy; 2026 | جامعة الإمام عبد الرحمن بن فيصل
+        <div class="social-icons">
+            <a href="https://tiktok.com/@eban3_"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/9665xxxxxxxx"><i class="fab fa-whatsapp"></i></a>
         </div>
+        <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.7;">جميع الحقوق محفوظة لـ حملة إبان &copy; 2026</p>
     </footer>
 
+    <script>
+        const details = {
+            absher: {
+                title: "منصة أبشر (الأفراد)",
+                content: `<h3>◈ التعريف بالمنصة</h3><p>تعتبر أبشر هي المنصة الرائدة للخدمات الإلكترونية لوزارة الداخلية في المملكة، وتهدف لربط القطاعات إلكترونياً وتسهيل الإجراءات.</p><h3>◈ أهم الخدمات التوعوية</h3><ul><li>إصدار وتجديد الهوية الوطنية والجوازات.</li><li>خدمات المرور وتجديد الرخص.</li><li>الاستعلام عن المخالفات وتأشيرات الخروج والعودة.</li></ul>`
+            },
+            nafath: {
+                title: "النفاذ الوطني الموحد",
+                content: `<h3>◈ التعريف بالمنصة</h3><p>هو نظام وطني مركزي يهدف إلى إصدار هوية رقمية موحدة لكل مواطن ومقيم لضمان الدخول الآمن لكل المنصات الحكومية بكلمة مرور واحدة.</p><h3>◈ مميزات النظام</h3><ul><li>تطبيق "نفاذ" للمصادقة عبر الجوال.</li><li>ربط شامل لجميع بوابات الوزارات والجهات الخدمية.</li><li>رفع مستوى الأمان والخصوصية للبيانات.</li></ul>`
+            },
+            sehhaty: {
+                title: "منصة صحتي",
+                content: `<h3>◈ التعريف بالمنصة</h3><p>المنصة الموحدة لوزارة الصحة السعودية لتقديم الخدمات الصحية للأفراد، ومتابعة الملف الطبي الرقمي.</p><h3>◈ خدمات المنصة</h3><ul><li>حجز المواعيد في المراكز الصحية.</li><li>عرض التقارير الطبية والوصفات الإلكترونية.</li><li>متابعة المؤشرات الحيوية واللقاحات.</li></ul>`
+            },
+            qiwa: {
+                title: "منصة قوى (Qiwa)",
+                content: `<h3>◈ التعريف بالمنصة</h3><p>هي المنصة الموحدة لخدمات قطاع العمل في المملكة، وتجمع جميع أطراف العمل (موظف، صاحب عمل، جهة حكومية).</p><h3>◈ أهداف التوعية</h3><ul><li>إدارة العقود الوظيفية إلكترونياً.</li><li>خدمات النقل الوظيفي والشهادات المهنية.</li><li>تحسين بيئة العمل وحماية الحقوق.</li></ul>`
+            },
+            study: {
+                title: "منصة ادرس في السعودية",
+                content: `<h3>◈ التعريف بالمنصة</h3><p>منصة موحدة تهدف لتسهيل إجراءات القبول في الجامعات السعودية ونشر الفرص التعليمية والبحثية المتاحة.</p><h3>◈ ما نوضحه في إبان</h3><ul><li>خطوات التسجيل في المسارات الأكاديمية.</li><li>الخدمات الجامعية الرقمية المتكاملة.</li><li>مواكبة التحول في قطاع التعليم والابتكار.</li></ul>`
+            },
+            vision: {
+                title: "رؤية وأهداف إبان",
+                content: `<h3>◈ رؤيتنا</h3><p>أن نكون جسراً إعلامياً رقمياً يساهم في بناء مجتمع واعي تقنياً يستثمر في الخدمات الحكومية بأفضل صورة.</p><h3>◈ فريق العمل</h3><p>مشروع تخرج طالبات قسم الإعلام - مسار العلاقات العامة - جامعة الإمام عبد الرحمن بن فيصل.</p>`
+            },
+            privacy: {
+                title: "سياسة الخصوصية",
+                content: `<h3>◈ حماية البيانات</h3><p>نؤكد في حملة إبان أن هذا الموقع لأغراض تعليمية وتوعوية فقط، ولا يتم طلب أي بيانات دخول حقيقية أو أرقام سرية للمنصات.</p>`
+            }
+        };
+
+        function openModal(key) {
+            document.getElementById("modalTitle").innerText = details[key].title;
+            document.getElementById("modalBody").innerHTML = details[key].content;
+            document.getElementById("infoModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("infoModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("infoModal")) { closeModal(); }
+        }
+    </script>
 </body>
 </html>
