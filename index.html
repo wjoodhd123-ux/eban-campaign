@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملة إبان | الواجهة الرسمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f7942;
+            --accent: #c5a059;
+            --bg: #f8f9f5;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(#dce7d3 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 10px solid var(--primary);
+        }
+
+        .logo-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            padding: 5px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
+        .uni-info { color: #888; font-size: 0.95rem; margin-bottom: 30px; font-weight: 500; }
+
+        .details-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .details-box h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .goal-item {
+            background: #f1f5ee;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn-platform {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--primary);
+            color: white;
+            padding: 18px 25px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-platform:hover {
+            transform: translateY(-3px);
+            background: var(--accent);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-card">
+            
+            <div class="logo-wrapper">
+                <img src="logo.jpeg" alt="شعار إبان">
+            </div>
+
+            <h1>حملة إبــــان</h1>
+            <p class="uni-info">جامعة الإمام عبد الرحمن بن فيصل | قسم الإعلام</p>
+
+            <div class="details-box">
+                <h3><i class="fas fa-eye"></i> رؤيتنا</h3>
+                <p>تعزيز الوعي الرقمي بالخدمات الحكومية السعودية والمساهمة في بناء مجتمع معرفي يواكب رؤية المملكة 2030.</p>
+            </div>
+
+            <div class="details-box">
+                <h3><i class="fas fa-bullseye"></i> أهدافنا</h3>
+                <div class="goals-grid">
+                    <div class="goal-item">توعية تقنية</div>
+                    <div class="goal-item">تسهيل الوصول</div>
+                    <div class="goal-item">دعم التحول الرقمي</div>
+                    <div class="goal-item">تمكين الطالبات</div>
+                </div>
+            </div>
+
+            <div class="links-grid">
+                <a href="https://tiktok.com/@eban3_" target="_blank" class="btn-platform">
+                    <span>حسابنا على تيك توك</span>
+                    <i class="fab fa-tiktok"></i>
+                </a>
+
+                <a href="#" target="_blank" class="btn-platform" style="background: #000;">
+                    <span>تابعنا على إكس</span>
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+
+                <a href="https://wa.me/9665xxxxxxxx" target="_blank" class="btn-platform" style="background: #25D366;">
+                    <span>تواصل معنا عبر واتساب</span>
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>جميع الحقوق محفوظة لـ حملة إبان &copy; 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>
