@@ -3,184 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حملة إبان | الواجهة الرسمية</title>
+    <title>بوابة إبان الرقمية | نموذج تجريبي مفصل</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #4f7942;
-            --accent: #c5a059;
-            --bg: #f8f9f5;
+            --gov-green: #2d4626; /* أخضر رسمي غامق */
+            --gold: #c5a059;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(#dce7d3 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
-            color: #333;
-            line-height: 1.6;
-        }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-light); color: #333; }
 
-        .container {
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .profile-card {
-            background: white;
-            border-radius: 30px;
-            padding: 40px 25px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border-top: 10px solid var(--primary);
-        }
-
-        .logo-wrapper {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            padding: 5px;
-            background: white;
+        /* الهيدر الرسمي */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .logo-wrapper img {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 5px; }
-        .uni-info { color: #888; font-size: 0.95rem; margin-bottom: 30px; font-weight: 500; }
-
-        .details-box {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
-            text-align: right;
-        }
-
-        .details-box h3 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .goals-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .goal-item {
-            background: #f1f5ee;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .btn-platform {
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-            background: var(--primary);
+            align-items: center;
+            border-bottom: 4px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .logo-section img { height: 50px; border-radius: 50%; border: 2px solid var(--gold); }
+        .logo-text h2 { color: var(--gov-green); font-size: 1.2rem; }
+
+        /* قسم الترحيب الرئيسي */
+        .hero {
+            background: linear-gradient(45deg, var(--gov-green), #426338);
             color: white;
-            padding: 18px 25px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-platform:hover {
-            transform: translateY(-3px);
-            background: var(--accent);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        footer {
+            padding: 80px 5%;
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #aaa;
+            clip-path: ellipse(150% 100% at 50% 0%); /* حركة تصميم عصرية */
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        /* شبكة الأيقونات (الخدمات المفصلة) */
+        .section-title { text-align: center; margin: 50px 0 30px; color: var(--gov-green); font-weight: 800; }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #eee;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+
+        .service-item i { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+        .service-item h4 { color: var(--gov-green); margin-bottom: 10px; }
+        .service-item p { font-size: 0.85rem; color: #777; }
+
+        /* قسم الرؤية والأهداف (مفصل بنظام البطاقات الكبيرة) */
+        .about-section {
+            background: #fff;
+            padding: 60px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .about-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 30px;
+            border-right: 6px solid var(--gold);
+            background: #fdfdfd;
+            border-radius: 10px;
+        }
+
+        .about-card h3 { color: var(--gov-green); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+
+        /* إحصائيات سريعة */
+        .stats-bar {
+            background: var(--gov-green);
+            color: white;
+            padding: 40px 5%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item h2 { font-size: 2.5rem; color: var(--gold); }
+
+        /* فوتر احترافي */
+        footer {
+            background: #1a2a17;
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 { color: var(--gold); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8; }
+        
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { color: white; font-size: 1.5rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--gold); }
+
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="profile-card">
-            
-            <div class="logo-wrapper">
-                <img src="logo.jpeg" alt="شعار إبان">
+    <header>
+        <div class="logo-section">
+            <img src="logo.jpeg" alt="Eban Logo">
+            <div class="logo-text">
+                <h2>بوابة إبان الرقمية</h2>
             </div>
+        </div>
+        <div class="header-links" style="font-weight: bold; color: var(--gov-green);">IAU - قسم الإعلام</div>
+    </header>
 
-            <h1>حملة إبــــان</h1>
-            <p class="uni-info">جامعة الإمام عبد الرحمن بن فيصل | قسم الإعلام</p>
+    <section class="hero">
+        <h1>مستقبل الخدمات الحكومية الرقمية</h1>
+        <p>نموذج تجريبي يستعرض رؤية حملة إبان في توعية المجتمع بأهم المنصات الإلكترونية السعودية وتسهيل الوصول إليها.</p>
+    </section>
 
-            <div class="details-box">
-                <h3><i class="fas fa-eye"></i> رؤيتنا</h3>
-                <p>تعزيز الوعي الرقمي بالخدمات الحكومية السعودية والمساهمة في بناء مجتمع معرفي يواكب رؤية المملكة 2030.</p>
+    <h2 class="section-title">◈ خدمات البوابة الإلكترونية</h2>
+    
+    <div class="services-grid">
+        <div class="service-item">
+            <i class="fas fa-id-card"></i>
+            <h4>منصة أبشر</h4>
+            <p>دليل شامل للخدمات الفردية، الجوازات، والمرور.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-heartbeat"></i>
+            <h4>منصة صحتي</h4>
+            <p>كيفية حجز المواعيد والوصول للسجل الصحي الرقمي.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-university"></i>
+            <h4>منصة نفاذ</h4>
+            <p>شرح الهوية الرقمية الموحدة لجميع الخدمات.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-briefcase"></i>
+            <h4>منصة قوى</h4>
+            <p>دليل خدمات قطاع العمل والموارد البشرية.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>منصة ادرس</h4>
+            <p>كل ما يخص الخدمات التعليمية والجامعية.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>الأمن السيبراني</h4>
+            <p>نصائح لحماية بياناتك أثناء استخدام المواقع.</p>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <div class="about-card">
+            <h3><i class="fas fa-flag"></i> رؤيتنا الاستراتيجية</h3>
+            <p>نهدف إلى أن تكون "إبان" المرجع الأول للطالبات والمجتمع في فهم واستخدام التقنيات الحكومية الحديثة، دعماً لمسيرة المملكة في التحول الرقمي الكامل.</p>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-bullseye"></i> رسالة الحملة</h3>
+            <p>نعمل من خلال مسار العلاقات العامة بجامعة IAU على تحويل المعلومات التقنية المعقدة إلى محتوى إعلامي بسيط وجذاب يصل للجميع.</p>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item"><h2>+50</h2><p>منصة مدعومة</p></div>
+        <div class="stat-item"><h2>100%</h2><p>وعي رقمي</p></div>
+        <div class="stat-item"><h2>2030</h2><p>رؤية طموحة</p></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>عن إبان</h4>
+                <p>مشروع تخرج طالبات قسم الإعلام بجامعة الإمام عبد الرحمن بن فيصل - مسار العلاقات العامة.</p>
             </div>
-
-            <div class="details-box">
-                <h3><i class="fas fa-bullseye"></i> أهدافنا</h3>
-                <div class="goals-grid">
-                    <div class="goal-item">توعية تقنية</div>
-                    <div class="goal-item">تسهيل الوصول</div>
-                    <div class="goal-item">دعم التحول الرقمي</div>
-                    <div class="goal-item">تمكين الطالبات</div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li>◈ دليل المستخدم</li>
+                    <li>◈ الأسئلة الشائعة</li>
+                    <li>◈ سياسة الخصوصية</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <div class="social-icons">
+                    <a href="https://tiktok.com/@eban3_"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://wa.me/9665xxxxxxxx"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-
-            <div class="links-grid">
-                <a href="https://tiktok.com/@eban3_" target="_blank" class="btn-platform">
-                    <span>حسابنا على تيك توك</span>
-                    <i class="fab fa-tiktok"></i>
-                </a>
-
-                <a href="#" target="_blank" class="btn-platform" style="background: #000;">
-                    <span>تابعنا على إكس</span>
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-
-                <a href="https://wa.me/9665xxxxxxxx" target="_blank" class="btn-platform" style="background: #25D366;">
-                    <span>تواصل معنا عبر واتساب</span>
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-
         </div>
-
-        <footer>
-            <p>جميع الحقوق محفوظة لـ حملة إبان &copy; 2026</p>
-        </footer>
-    </div>
+        <div class="copyright">
+            جميع الحقوق محفوظة - حملة إبان &copy; 2026 | جامعة الإمام عبد الرحمن بن فيصل
+        </div>
+    </footer>
 
 </body>
 </html>
