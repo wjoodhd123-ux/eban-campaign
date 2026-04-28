@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حملة إبان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --bg-color: #f4f1ea;
+            --accent-color: #8d6e63;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-image {
+            max-width: 180px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            color: #555;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-item i {
+            margin-left: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .main-content {
+            margin-right: 270px;
+            padding: 40px;
+            flex: 1;
+        }
+
+        /* تنسيق الفيديو: حجم أصغر وموسط */
+        .video-container {
+            margin: 0 auto 25px auto;
+            max-width: 60%; 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 20px; }
+        h3 { color: var(--accent-color); margin-top: 25px; }
+        p, li { line-height: 1.8; font-size: 1.1em; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-right: 0; padding: 20px; }
+            .video-container { max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="eban.jpeg" alt="لوقو إبان" class="logo-image">
+        </div>
+
+        <div class="nav-item active" onclick="showContent('intro', this)">
+            <i class="fas fa-info-circle"></i> مقدمة الحملة
+        </div>
+        <div class="nav-item" onclick="showContent('vision', this)">
+            <i class="fas fa-eye"></i> الرؤية والرسالة
+        </div>
+        <div class="nav-item" onclick="showContent('health', this)">
+            <i class="fas fa-heartbeat"></i> محور الصحة
+        </div>
+        <div class="nav-item" onclick="showContent('education', this)">
+            <i class="fas fa-graduation-cap"></i> محور التعليم
+        </div>
+        <div class="nav-item" onclick="showContent('media', this)">
+            <i class="fas fa-bullhorn"></i> محور الإعلام
+        </div>
+        <div class="nav-item" onclick="showContent('tourism', this)">
+            <i class="fas fa-map-marked-alt"></i> محور السياحة
+        </div>
+        <div class="nav-item" onclick="showContent('sports', this)">
+            <i class="fas fa-running"></i> محور الرياضة
+        </div>
+        <div class="nav-item" onclick="showContent('hajj', this)">
+            <i class="fas fa-kaaba"></i> محور الحج
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div id="displayArea">
+            <h1>مقدمة وفكرة الحملة</h1>
+            <p>تتوجه المملكة إلى تعزيز جودة الحياة ضمن أهداف رؤية ٢٠٣٠ عبر تطوير الخدمات الحكومية المتكاملة.</p>
+            <h3>◈ فكرة الحملة:</h3>
+            <p>تعريف المجتمع بالخدمات الحكومية وشرح أثرها في تحسين الحياة اليومية وتسهيل الوصول لها.</p>
+        </div>
+    </div>
+
+    <script>
+        function getVid(fileName) {
+            return `
+            <div class="video-container">
+                <video controls autoplay muted playsinline>
+                    <source src="${fileName}.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+            </div>`;
+        }
+
+        const details = {
+            intro: `<h1>مقدمة وفكرة الحملة</h1><p>تتوجه المملكة إلى تعزيز جودة الحياة ضمن أهداف رؤية ٢٠٣٠ عبر تطوير الخدمات الحكومية المتكاملة.</p><h3>◈ فكرة الحملة:</h3><p>تعريف المجتمع بالخدمات الحكومية وشرح أثرها في تحسين الحياة اليومية وتسهيل الوصول لها.</p><h3>◈ الفئة المستهدفة:</h3><ul><li>المواطنون والمقيمون.</li><li>كبار السن وذوو الاحتياجات الخاصة.</li><li>صناع المحتوى والمؤثرون.</li></ul>`,
+            vision: `<h1>الرؤية والرسالة والأهداف</h1><h3>◈ الرؤية:</h3><p>مجتمع واعٍ بالخدمات الحكومية، قادر على الوصول إليها والاستفادة منها بكفاءة.</p><h3>◈ الرسالة:</h3><p>إبراز الخدمات الحكومية غير المتداولة للأفراد للاستفادة منها.</p>`,
+            health: getVid('وزاره الصحة') + `<h1>محور الصحة وجودة الحياة</h1><h3>◈ يشمل الخدمات التالية:</h3><ul><li>الرعاية الصحية المنزلية.</li><li>الاستشارات الطبية الفورية.</li><li>استعراض الأدوية والوصفات.</li></ul>`,
+            education: getVid('وزاره التعليم') + `<h1>محور التعليم وبناء القدرات</h1><h3>◈ يشمل:</h3><ul><li>منصة ادرس في السعودية.</li><li>تطبيق روضتي.</li><li>منصة سفير.</li></ul>`,
+            
+            // تم إضافة فيديو الإعلام هنا
+            media: getVid('اعلام') + `<h1>محور الإعلام والتواصل المجتمعي</h1><h3>◈ يشمل:</h3><ul><li>مبادرة نمو - SMF GROW UP.</li><li>منصة نبض الإعلام.</li></ul><h3>◈ هدف المحور:</h3><p>تعزيز المعرفة بالمبادرات الإعلامية والخدمات التنظيمية.</p>`,
+            
+            tourism: getVid('السياحه') + `<h1>محور السياحة والترفيه</h1><h3>◈ يشمل:</h3><ul><li>سارة المرشدة الذكية.</li><li>برنامج رواد السياحة.</li></ul>`,
+            sports: getVid('الرياضه') + `<h1>محور الرياضة</h1><h3>◈ يشمل:</h3><ul><li>برامج دعم الأندية الرياضية غير الربحية.</li><li>المبادرات المجتمعية الرياضية.</li></ul>`,
+            hajj: getVid('الحج') + `<h1>محور الحج والعمرة</h1><h3>◈ يشمل:</h3><ul><li>خدمات الاستعلام.</li><li>تقديم المعاملات وتسجيل الخطابات.</li><li>تصاريح الحج.</li></ul>`
+        };
+
+        function showContent(key, element) {
+            if (details[key]) {
+                document.getElementById("displayArea").innerHTML = details[key];
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                element.classList.add('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+    </script>
+</body>
+</html>
